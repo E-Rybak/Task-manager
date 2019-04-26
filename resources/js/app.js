@@ -23,6 +23,7 @@ Vue.use(BootstrapVue);
 Vue.component('welcome', require('./components/welcome.vue').default);
 Vue.component('projects-index', require('./components/projects-index.vue').default);
 Vue.component('projects-show', require('./components/projects-show.vue').default);
+Vue.component('projects-create', require('./components/projects-create.vue').default);
 Vue.component('tasks-show', require('./components/tasks-show.vue').default);
 Vue.component('tasks-index', require('./components/tasks-index.vue').default);
 
