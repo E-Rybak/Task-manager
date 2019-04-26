@@ -935,7 +935,8 @@ input[type="color"].form-control:disabled {
 
 .b-toaster.b-toaster-top-right .b-toast.b-toaster-leave-active .toast.fade, .b-toaster.b-toaster-top-left .b-toast.b-toaster-leave-active .toast.fade, .b-toaster.b-toaster-bottom-right .b-toast.b-toaster-leave-active .toast.fade, .b-toaster.b-toaster-bottom-left .b-toast.b-toaster-leave-active .toast.fade {
   transition-delay: 0s;
-}@charset "UTF-8";
+}
+/*# sourceMappingURL=bootstrap-vue.css.map */@charset "UTF-8";
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)

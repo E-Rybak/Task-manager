@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Task;
 
 class TaskController extends Controller
 {
@@ -13,7 +14,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return "asdads";
+        $tasks = Task::all();
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
@@ -45,7 +47,8 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        $task = Task::with('project')->findOrFail($id);
+        return view('tasks.show', compact('task'));
     }
 
     /**
