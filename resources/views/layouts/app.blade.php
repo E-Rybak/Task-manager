@@ -76,14 +76,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('tasks.index') }}">{{ __('Tasks') }}</a>
                         </li>
-                        <li class="nav-item">
-                            <b-button v-b-modal.create-project variant="success">Test</b-button>
-                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <projects-create id="create-project"></projects-create>
         <main class="py-4">
             @yield('content')
         </main>
