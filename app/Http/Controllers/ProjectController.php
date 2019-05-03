@@ -38,7 +38,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $project = Project::create(['title'=>$request->input('title')]);
-        return response()->json($project, 201);
+        return view('projects.show', compact('project'));
     }
 
     /**
@@ -61,7 +61,8 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::findOrFail($id);
+        return view('projects.edit', compact('project'));
     }
 
     /**
@@ -73,7 +74,11 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Project::where('id', $id)->update([
+            'title' => $request->title,
+        ]);
+        $project = Project::findOrFail($id);
+        return view('projects.show', compact('project'));
     }
 
     /**
@@ -84,6 +89,8 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Project::findOrFail($id)->delete();
+        $projects = Project::all();
+        return redirect()->route('projects.index');
     }
 }
