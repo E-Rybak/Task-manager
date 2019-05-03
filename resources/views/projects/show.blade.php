@@ -16,9 +16,5 @@
 	</b-form>
 </div>
 <br>
-<div class="container">
-	<h1>{{ $project->title }}'s tasks</h1>
-<b-table striped hover :items="{{ $project->tasks }}">
-		</b-table>
-</div>
+<tasks-index-create tasks="{{ $project->tasks }}" project="{{ $project }}"></tasks-index-create>
 @endsection

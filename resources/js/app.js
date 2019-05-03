@@ -24,6 +24,7 @@ Vue.component('welcome', require('./components/welcome.vue').default);
 Vue.component('projects-index', require('./components/projects-index.vue').default);
 Vue.component('confirm-delete-button', require('./components/confirm-delete-button.vue').default);
 Vue.component('tasks-show', require('./components/tasks-show.vue').default);
+Vue.component('tasks-index-create', require('./components/tasks-index-create.vue').default);
 Vue.component('tasks-index', require('./components/tasks-index.vue').default);
 
 
