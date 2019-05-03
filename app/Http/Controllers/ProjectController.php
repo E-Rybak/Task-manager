@@ -38,7 +38,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $project = Project::create(['title'=>$request->input('title')]);
-        return view('projects.show', compact('project'));
+        return redirect()->route('projects.show', ['id' => $project->id]);
     }
 
     /**
