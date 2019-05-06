@@ -17,6 +17,6 @@
 </div>
 <br>
 
-<tasks-index-create task-form-url="{{ route('tasks.store') }}" tasks="{{ $project->tasks }}" project="{{ $project }}"></tasks-index-create>
+<tasks-index-create task-form-url="{{ route('tasks.store') }}" project="{{ $project }}"></tasks-index-create>
 
 @endsection

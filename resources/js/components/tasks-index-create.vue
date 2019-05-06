@@ -2,8 +2,14 @@
 <div class="container">
 
 	<h1>{{ projectObject.title }} tasks</h1>
-	<b-table striped hover :items="projectObject.tasks">
+	<b-table responsive small striped hover :items="projectObject.tasks" :fields="fields">
+		<template slot="idtitle" slot-scope="data">
+			<b-form @submit.prevent="onDeleteTask(data.item.id)">
+				<b-button variant="danger" type="submit">Delete: '{{ shortenTitleForButton(data.item.title) }}'</b-button>
+			</b-form>
+		</template>
 	</b-table>
+
 	<b-button v-if="!createNewTask" v-on:click="showTaskForm" variant="success">New task</b-button>
 	
 	<b-form v-if="createNewTask" method="post" @submit.prevent="onSubmitTask">
@@ -49,21 +55,28 @@ import Axios from 'axios'
 					content: '',
 					projectId: Number
 				},
-				createNewTask: false
+				createNewTask: false,
+				fields: [
+					{
+						key: 'title'
+					},
+					{
+						key: 'content'
+					},
+					{
+						key: 'idtitle', label: "Action"
+					}
+				]
 			}
 		},
 		created() {
 			this.projectObject = JSON.parse(this.project)
 			this.task.projectId = this.projectObject.id
-			console.log(this.taskFormUrl)
 		},
-		props: ['project', 'tasks', 'task-form-url'],
+		props: ['project', 'task-form-url'],
 		methods: {
 			onSubmitTask() {
 				// Create task via API call
-				console.log("submitting form")
-				console.log(JSON.stringify(this.task))
-
 				const client = Axios.create({
 					baseURL: this.taskFormUrl,
 					headers: {
@@ -84,9 +97,30 @@ import Axios from 'axios'
 				else if (!this.createNewTask) {
 					this.createNewTask = true
 				}
+			},
+			onDeleteTask($id) {
+				console.log($id)
+				const client = Axios.create({
+					baseURL: this.taskFormUrl + '/' + $id,
+					headers: {
+						"Content-Type": "application/json",
+						Accept: "application/json"
+					}
+				})
+				client.delete('', this.task).then(response => {
+					console.log(response.data)
+				}).catch(error => {
+					console.log(error.message)
+				})
+				console.log(client)
+			},
+			shortenTitleForButton($title) {
+				//Shorten title to the first two words, for the delete button.
+				var index = $title.indexOf(' ')
+				var indexTwo = $title.indexOf(' ', index + 1) 
+				return $title.substring(0, indexTwo) + '...'
 			}
 		}
-
 	};
 </script>
 <style scoped>
