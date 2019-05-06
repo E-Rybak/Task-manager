@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Task;
+use App\Project;
 
 class TaskController extends Controller
 {
@@ -15,17 +16,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::all();
-        return view('tasks.index', compact('tasks'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response($tasks, 200);
     }
 
     /**
@@ -36,7 +27,12 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = new Task;
+        $task->title = $request->input('title');
+        $task->content = $request->input('content');
+        $project = Project::findOrFail($request->input('projectId'));
+        $project->tasks()->save($task);
+        return response($task, 201);
     }
 
     /**
@@ -48,18 +44,7 @@ class TaskController extends Controller
     public function show($id)
     {
         $task = Task::with('project')->findOrFail($id);
-        return view('tasks.show', compact('task'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return response($task, 200);
     }
 
     /**

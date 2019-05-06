@@ -14,7 +14,7 @@
 
 		</b-form-group>
 
-		<b-button type="submit" variant="success">Test</b-button>
+		<b-button type="submit" variant="success">Create</b-button>
 	</b-form>
 </div>
 

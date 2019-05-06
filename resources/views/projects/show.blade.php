@@ -16,5 +16,7 @@
 	</b-form>
 </div>
 <br>
-<tasks-index-create tasks="{{ $project->tasks }}" project="{{ $project }}"></tasks-index-create>
+
+<tasks-index-create task-form-url="{{ route('tasks.store') }}" tasks="{{ $project->tasks }}" project="{{ $project }}"></tasks-index-create>
+
 @endsection

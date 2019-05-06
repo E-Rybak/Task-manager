@@ -18,5 +18,5 @@
 			}
 		},
 		props: ['task']
-	}
+	};
 </script>
