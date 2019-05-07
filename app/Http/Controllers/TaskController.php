@@ -20,6 +20,17 @@ class TaskController extends Controller
     }
 
     /**
+     * Display a listing of tasks for a specific project
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getProjectTasks($id) {
+        $project = Project::with('tasks')->findOrFail($id);
+        $tasks = $project->tasks;
+        return response($tasks, 200);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
