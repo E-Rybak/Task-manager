@@ -9,6 +9,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 import BootstrapVue from 'bootstrap-vue';
 import store from './store/store.js'
+import TaskService from './services/TaskService'
 
 /**
  * The following block of code may be used to automatically register your

@@ -5,7 +5,7 @@
 
 import Vue from 'vue'
 import Vuex from 'vuex'
-import * as task from './modules/task.js'
+import * as task from '../modules/task.js'
 
 Vue.use(Vuex)
 

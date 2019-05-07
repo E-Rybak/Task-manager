@@ -73,26 +73,14 @@ import { mapState } from 'vuex'
 		},
 		created() {
 			this.projectObject = JSON.parse(this.project)
-			this.task.projectId = this.projectObject.id
+			this.task.projectId = this.projectObject.id               
+			this.$store.dispatch('task/fetchTasks', this.projectObject.id)
 		},
 		props: ['project', 'task-form-url'],
 		methods: {
 			onSubmitTask() {
 				// Create task via API call
-				const client = Axios.create({
-					baseURL: this.taskFormUrl,
-					headers: {
-						"Content-Type": "application/json",
-						Accept: "application/json"
-					}
-				})
-				client.post('', this.task).then(response => {
-					console.log(response.data)
-					this.$store.dispatch('task/fetchTasks')
-
-				}).catch(error => {
-					console.log(error.message)
-				})
+				this.$store.dispatch('task/addTask', this.task)
 			},
 			showTaskForm() {
 				if (this.createNewTask) {
@@ -103,27 +91,19 @@ import { mapState } from 'vuex'
 				}
 			},
 			onDeleteTask($id) {
-				console.log($id)
-				const client = Axios.create({
-					baseURL: this.taskFormUrl + '/' + $id,
-					headers: {
-						"Content-Type": "applicationj/son",
-						Accept: "application/json"
-					}
-				})
-				client.delete('', this.task).then(response => {
-					console.log(response.data)
-					this.$store.dispatch('task/fetchTasks')
-				}).catch(error => {
-					console.log(error.message)
-				})
-				console.log(client)
+				let payload = { id: $id, projectId: this.projectObject.id }
+				this.$store.dispatch('task/destroyTask', payload)
 			},
 			shortenTitleForButton($title) {
 				//Shorten title to the first two words, for the delete button.
-				var index = $title.indexOf(' ')
-				var indexTwo = $title.indexOf(' ', index + 1) 
-				return $title.substring(0, indexTwo) + '...'
+				if ($title.length > 9){
+					var index = $title.indexOf(' ')
+					var indexTwo = $title.indexOf(' ', index + 1) 
+					return $title.substring(0, indexTwo) + '...'	
+				} else {
+					return $title;
+				}
+				
 			}
 		},
 		computed: {

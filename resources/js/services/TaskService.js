@@ -5,18 +5,23 @@
 
 import Axios from 'axios'
 
-const client = Axios.create({
-	baseUrl: '',
+const taskClient = Axios.create({
+	baseURL: 'http://localhost/Task-manager/public/api/',
 	headers: {
-		"Content-Type": 'application/json',
-		Accept: 'application/json'
+		"Content-Type": "application/json",
+		Accept: "application/json"
 	}
 })
 
 export default {
 	// Returns a Promise that will contain tasks
-	getAll() {
-		return client.get('');
+	getAll($project_id) {
+		return taskClient.get('projects/' + $project_id + '/tasks');
 	},
-
-}
+	createTask($task) {
+		return taskClient.post('tasks', $task);
+	},
+	deleteTask($taskId) {
+		return taskClient.delete('tasks/' + $taskId);
+	}
+};
