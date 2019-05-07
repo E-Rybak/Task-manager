@@ -2,7 +2,7 @@
 <div class="container">
 
 	<h1>{{ projectObject.title }} tasks</h1>
-	<b-table responsive small striped hover :items="projectObject.tasks" :fields="fields">
+	<b-table responsive small striped hover :items="tasks" :fields="fields">
 		<template slot="idtitle" slot-scope="data">
 			<b-form @submit.prevent="onDeleteTask(data.item.id)">
 				<b-button variant="danger" type="submit">Delete: '{{ shortenTitleForButton(data.item.title) }}'</b-button>
@@ -41,11 +41,13 @@
 		<b-button type="submit" variant="success">Create task</b-button>
 		<b-button v-if="createNewTask" v-on:click="showTaskForm" variant="warning">Close form</b-button>
 	</b-form>
-
 </div>
 </template>
 <script>
+
 import Axios from 'axios'
+
+import { mapState } from 'vuex'
 	export default {
 		data() {
 			return {
@@ -86,6 +88,8 @@ import Axios from 'axios'
 				})
 				client.post('', this.task).then(response => {
 					console.log(response.data)
+					this.$store.dispatch('task/fetchTasks')
+
 				}).catch(error => {
 					console.log(error.message)
 				})
@@ -103,12 +107,13 @@ import Axios from 'axios'
 				const client = Axios.create({
 					baseURL: this.taskFormUrl + '/' + $id,
 					headers: {
-						"Content-Type": "application/json",
+						"Content-Type": "applicationj/son",
 						Accept: "application/json"
 					}
 				})
 				client.delete('', this.task).then(response => {
 					console.log(response.data)
+					this.$store.dispatch('task/fetchTasks')
 				}).catch(error => {
 					console.log(error.message)
 				})
@@ -120,6 +125,11 @@ import Axios from 'axios'
 				var indexTwo = $title.indexOf(' ', index + 1) 
 				return $title.substring(0, indexTwo) + '...'
 			}
+		},
+		computed: {
+			...mapState({
+				tasks: state => state.task.tasks
+			})
 		}
 	};
 </script>

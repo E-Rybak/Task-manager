@@ -8,6 +8,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import BootstrapVue from 'bootstrap-vue';
+import store from './store/store.js'
 
 /**
  * The following block of code may be used to automatically register your
@@ -25,7 +26,6 @@ Vue.component('projects-index', require('./components/projects-index.vue').defau
 Vue.component('confirm-delete-button', require('./components/confirm-delete-button.vue').default);
 Vue.component('tasks-index-create', require('./components/tasks-index-create.vue').default);
 
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -34,4 +34,5 @@ Vue.component('tasks-index-create', require('./components/tasks-index-create.vue
 
 const app = new Vue({
     el: '#app',
+    store: store,
 });
