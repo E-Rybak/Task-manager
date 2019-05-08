@@ -16,13 +16,13 @@
 			}
 		},
 		created() {
-			this.ps = JSON.parse(this.projects)
+			this.ps = JSON.parse(this._projects)
 		},
-		props: ['projects'],
+		props: ['_projects', 'project-store-url'],
 		methods: {
 			link($id) {
 				return "projects/" + $id
 			}
 		}
-	}
+	};
 </script>

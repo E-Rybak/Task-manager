@@ -4,28 +4,40 @@
 		"selected_items":
 		[
 			[
+				"proj",
+				"projectObject"
+			],
+			[
+				"projec",
+				"projectId"
+			],
+			[
+				"project",
+				"projectId"
+			],
+			[
 				"proje",
 				"projectObject"
 			],
 			[
+				"pro",
+				"projectId"
+			],
+			[
+				"Task",
+				"TaskService"
+			],
+			[
 				"Tas",
-				"TaskContent"
+				"TaskService"
 			],
 			[
 				"create",
 				"createNewTask"
 			],
 			[
-				"projec",
-				"projectObject"
-			],
-			[
 				"backg",
 				"background-color\tproperty"
-			],
-			[
-				"proj",
-				"Project"
 			],
 			[
 				"title",
@@ -43,36 +55,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app/Http/Controllers/TaskController.php",
-			"settings":
-			{
-				"buffer_size": 1639,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "<template>\n<div class=\"container\">\n\n\t<h1>{{ projectObject.title }} tasks</h1>\n\t<b-table responsive small striped hover :items=\"projectObject.tasks\" :fields=\"fields\">\n\t\t<template slot=\"idtitle\" slot-scope=\"data\">\n\t\t\t<b-form @submit.prevent=\"onDeleteTask(data.item.id)\">\n\t\t\t\t<b-button variant=\"danger\" type=\"submit\">Delete: '{{ shortenTitleForButton(data.item.title) }}'</b-button>\n\t\t\t</b-form>\n\t\t</template>\n\t</b-table>\n\n\t<b-button v-if=\"!createNewTask\" v-on:click=\"showTaskForm\" variant=\"success\">New task</b-button>\n\t\n\t<b-form v-if=\"createNewTask\" method=\"post\" @submit.prevent=\"onSubmitTask\">\n\t\t<b-form-group\n\t\tid=\"form-group-taskname\"\n\t\tlabel=\"Enter the name the task you are creating\"\n\t\tlabel-for=\"TaskName\">\n\t\t<b-form-input \n\t\tid=\"TaskName\"\n\t\tplaceholder=\"Task name\"\n\t\tv-model=\"task.title\"\n\t\trequired>\n\t\t</b-form-input>\n\t\t</b-form-group>\n\t\t\n\t\t<b-form-group\n\t\tid=\"form-group-taskcontent\"\n\t\tlabel=\"Enter the details of the task\"\n\t\tlabel-for=\"TaskContent\">\n\t\t<b-form-textarea\n\t\tid=\"TaskContent\"\n\t\tplaceholder=\"Task content\"\n\t\tmax-rows=\"3\"\n\t\tv-model=\"task.content\"\n\t\trequired>\n\t\t</b-form-textarea>\n\t\t</b-form-group>\n\n\t\t<b-button type=\"submit\" variant=\"success\">Create task</b-button>\n\t\t<b-button v-if=\"createNewTask\" v-on:click=\"showTaskForm\" variant=\"warning\">Close form</b-button>\n\t</b-form>\n\n</div>\n</template>\n<script>\nimport Axios from 'axios'\n\texport default {\n\t\tdata() {\n\t\t\treturn {\n\t\t\t\tprojectObject: Object,\n\t\t\t\ttask: {\n\t\t\t\t\ttitle: '',\n\t\t\t\t\tcontent: '',\n\t\t\t\t\tprojectId: Number\n\t\t\t\t},\n\t\t\t\tcreateNewTask: false,\n\t\t\t\tfields: [\n\t\t\t\t\t{\n\t\t\t\t\t\tkey: 'title'\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tkey: 'content'\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tkey: 'idtitle', label: \"Action\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\tcreated() {\n\t\t\tthis.projectObject = JSON.parse(this.project)\n\t\t\tthis.task.projectId = this.projectObject.id\n\t\t},\n\t\tprops: ['project', 'task-form-url'],\n\t\tmethods: {\n\t\t\tonSubmitTask() {\n\t\t\t\t// Create task via API call\n\t\t\t\tconst client = Axios.create({\n\t\t\t\t\tbaseURL: this.taskFormUrl,\n\t\t\t\t\theaders: {\n\t\t\t\t\t\t\"Content-Type\": \"application/json\",\n\t\t\t\t\t\tAccept: \"application/json\"\n\t\t\t\t\t}\n\t\t\t\t})\n\t\t\t\tclient.post('', this.task).then(response => {\n\t\t\t\t\tconsole.log(response.data)\n\t\t\t\t}).catch(error => {\n\t\t\t\t\tconsole.log(error.message)\n\t\t\t\t})\n\t\t\t},\n\t\t\tshowTaskForm() {\n\t\t\t\tif (this.createNewTask) {\n\t\t\t\t\tthis.createNewTask = false\n\t\t\t\t}\n\t\t\t\telse if (!this.createNewTask) {\n\t\t\t\t\tthis.createNewTask = true\n\t\t\t\t}\n\t\t\t},\n\t\t\tonDeleteTask($id) {\n\t\t\t\tconsole.log($id)\n\t\t\t\tconst client = Axios.create({\n\t\t\t\t\tbaseURL: this.taskFormUrl + '/' + $id,\n\t\t\t\t\theaders: {\n\t\t\t\t\t\t\"Content-Type\": \"applicationj/son\",\n\t\t\t\t\t\tAccept: \"application/json\"\n\t\t\t\t\t}\n\t\t\t\t})\n\t\t\t\tclient.delete('', this.task).then(response => {\n\t\t\t\t\tconsole.log(response.data)\n\t\t\t\t}).catch(error => {\n\t\t\t\t\tconsole.log(error.message)\n\t\t\t\t})\n\t\t\t\tconsole.log(client)\n\t\t\t},\n\t\t\tshortenTitleForButton($title) {\n\t\t\t\t//Shorten title to the first two words, for the delete button.\n\t\t\t\tvar index = $title.indexOf(' ')\n\t\t\t\tvar indexTwo = $title.indexOf(' ', index + 1) \n\t\t\t\treturn $title.substring(0, indexTwo) + '...'\n\t\t\t}\n\t\t}\n\t};\n</script>\n<style scoped>\n\t#TaskName {\n\t\twidth: 300px;\n\t}\n\t#TaskContent {\n\t\twidth: 400px;\n\t}\n</style>",
-			"file": "resources/js/components/tasks-index-create.vue",
-			"file_size": 3267,
-			"file_write_time": 132016207596282761,
-			"settings":
-			{
-				"buffer_size": 3135,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/projects/show.blade.php",
-			"settings":
-			{
-				"buffer_size": 557,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -131,29 +113,34 @@
 	"expanded_folders":
 	[
 		"/C/xampp/htdocs/Task-manager",
-		"/C/xampp/htdocs/Task-manager/database",
-		"/C/xampp/htdocs/Task-manager/database/migrations",
 		"/C/xampp/htdocs/Task-manager/resources",
 		"/C/xampp/htdocs/Task-manager/resources/js",
-		"/C/xampp/htdocs/Task-manager/resources/js/components",
+		"/C/xampp/htdocs/Task-manager/resources/js/store",
 		"/C/xampp/htdocs/Task-manager/resources/views",
-		"/C/xampp/htdocs/Task-manager/resources/views/projects"
+		"/C/xampp/htdocs/Task-manager/resources/views/projects",
+		"/C/xampp/htdocs/Task-manager/routes"
 	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/Task-manager/app/Http/Controllers/TaskController.php",
+		"/C/xampp/htdocs/Task-manager/resources/js/components/tasks-index-create.vue",
+		"/C/xampp/htdocs/Task-manager/resources/js/store/store.js",
+		"/C/xampp/htdocs/Task-manager/config/app.php",
+		"/C/xampp/htdocs/Task-manager/resources/js/app.js",
+		"/C/xampp/htdocs/Task-manager/resources/views/projects/show.blade.php",
+		"/C/xampp/htdocs/Task-manager/resources/js/store/modules/task.js",
+		"/C/xampp/htdocs/Task-manager/resources/js/modules/thing.js",
+		"/C/xampp/htdocs/Task-manager/routes/api.php",
+		"/C/xampp/htdocs/Task-manager/app/Http/Controllers/ProjectController.php",
+		"/C/xampp/htdocs/Task-manager/routes/web.php",
+		"/C/xampp/htdocs/Task-manager/webpack.mix.js",
+		"/C/xampp/htdocs/Task-manager/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php",
 		"/C/xampp/htdocs/Task-manager/public/css/app.css",
 		"/C/xampp/htdocs/Task-manager/laravelproject.sublime-project",
-		"/C/xampp/htdocs/Task-manager/resources/js/app.js",
 		"/C/xampp/htdocs/Task-manager/public/css/style.css",
 		"/C/xampp/htdocs/Task-manager/resources/sass/app.scss",
-		"/C/xampp/htdocs/Task-manager/routes/web.php",
-		"/C/xampp/htdocs/Task-manager/app/Http/Controllers/TaskController.php",
 		"/C/Users/ery/AppData/Roaming/Sublime Text 3/Packages/User/Xdebug.sublime-settings",
 		"/C/Users/ery/AppData/Roaming/Sublime Text 3/Packages/Xdebug Client/Xdebug.sublime-settings",
-		"/C/xampp/htdocs/Task-manager/resources/js/components/tasks-index-create.vue",
-		"/C/xampp/htdocs/Task-manager/resources/views/projects/show.blade.php",
-		"/C/xampp/htdocs/Task-manager/app/Http/Controllers/ProjectController.php",
-		"/C/xampp/htdocs/Task-manager/routes/api.php",
 		"/C/xampp/htdocs/Task-manager/resources/js/components/tasks-show.vue",
 		"/C/xampp/htdocs/Task-manager/resources/views/projects/create.blade.php",
 		"/C/xampp/htdocs/Task-manager/resources/js/components/confirm-delete-button.vue",
@@ -167,7 +154,6 @@
 		"/C/xampp/htdocs/Task-manager/resources/js/components/projects-create.vue",
 		"/C/xampp/htdocs/Task-manager/app/Project.php",
 		"/C/xampp/htdocs/Task-manager/resources/js/bootstrap.js",
-		"/C/xampp/htdocs/Task-manager/resources/js/store/store.js",
 		"/C/xampp/htdocs/Task-manager/resources/js/store/modules/project.js",
 		"/C/xampp/htdocs/Task-manager/resources/js/services/ProjectService.js",
 		"/C/xampp/htdocs/Task-manager/app/Providers/AppServiceProvider.php",
@@ -212,103 +198,14 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/Http/Controllers/TaskController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1639,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1385,
-								1385
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 883.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "resources/js/components/tasks-index-create.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3135,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2690,
-								2690
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Vuejs Complete Package/vue.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 972.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "resources/views/projects/show.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 557,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								427,
-								427
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 28.0
+		"height": 27.0
 	},
 	"input":
 	{
@@ -349,7 +246,7 @@
 	"project": "laravelproject.sublime-project",
 	"replace":
 	{
-		"height": 52.0
+		"height": 50.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -358,6 +255,34 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"app.php",
+				"config\\app.php"
+			],
+			[
+				"taskserv",
+				"resources\\js\\services\\TaskService.js"
+			],
+			[
+				"projectcontroller",
+				"app\\Http\\Controllers\\ProjectController.php"
+			],
+			[
+				"web.",
+				"routes\\web.php"
+			],
+			[
+				"api",
+				"routes\\api.php"
+			],
+			[
+				"taskcontroller",
+				"app\\Http\\Controllers\\TaskController.php"
+			],
+			[
+				"webpack.js",
+				"webpack.mix.js"
+			],
 			[
 				"app.css",
 				"public\\css\\app.css"
@@ -389,10 +314,6 @@
 			[
 				"api.php",
 				"routes\\api.php"
-			],
-			[
-				"web.",
-				"routes\\web.php"
 			],
 			[
 				"web.php",
@@ -445,10 +366,6 @@
 			[
 				"projects-create",
 				"resources\\js\\components\\projects-create.vue"
-			],
-			[
-				"app.php",
-				"resources\\views\\layouts\\app.blade.php"
 			],
 			[
 				"project",
@@ -535,7 +452,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 284.0,
+	"side_bar_width": 260.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
