@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('tasks', 'TasksController');
-Route::get('/projects/{id}/tasks', 'TaskController@getProjectTasks');
+Route::get('/projects/{id}/tasks', 'TasksController@getProjectTasks');

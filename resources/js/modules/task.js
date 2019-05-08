@@ -27,7 +27,6 @@ export const actions = {
 		})
 	},
 	addTask({ commit, dispatch, state }, $task) {
-		console.log($task)
 		TaskService.createTask($task).then(response => {
 			dispatch('fetchTasks', $task.projectId)
 		}).catch(error => {
