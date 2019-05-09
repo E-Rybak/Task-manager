@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"proje",
+				"project"
+			],
+			[
 				"proj",
 				"projectObject"
 			],
@@ -14,10 +18,6 @@
 			[
 				"project",
 				"projectId"
-			],
-			[
-				"proje",
-				"projectObject"
 			],
 			[
 				"pro",
@@ -68,6 +68,22 @@
 		"selected_items":
 		[
 			[
+				"settings",
+				"Preferences: Settings"
+			],
+			[
+				"packages",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
 				"xdebug",
 				"Xdebug: Stop Debugging (Close Windows)"
 			],
@@ -78,10 +94,6 @@
 			[
 				"x",
 				"Xdebug: Start Debugging"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"insta",
@@ -110,29 +122,35 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/C/xampp/htdocs/Task-manager",
-		"/C/xampp/htdocs/Task-manager/resources",
-		"/C/xampp/htdocs/Task-manager/resources/js",
-		"/C/xampp/htdocs/Task-manager/resources/js/store",
-		"/C/xampp/htdocs/Task-manager/resources/views",
-		"/C/xampp/htdocs/Task-manager/resources/views/projects",
-		"/C/xampp/htdocs/Task-manager/routes"
-	],
 	"file_history":
 	[
-		"/C/xampp/htdocs/Task-manager/app/Http/Controllers/TaskController.php",
+		"/C/xampp/htdocs/Task-manager/resources/js/components/confirm-delete-button.vue",
+		"/C/xampp/htdocs/Task-manager/resources/views/projects/index.blade.php",
+		"/C/xampp/htdocs/Task-manager/routes/web.php",
+		"/C/xampp/htdocs/Task-manager/app/Http/Controllers/ProjectsController.php",
+		"/C/Users/ery/AppData/Roaming/Sublime Text 3/Packages/AceJump/README.md",
+		"/C/Users/ery/AppData/Roaming/Sublime Text 3/Packages/AceJump/AceJump.sublime-settings",
+		"/C/xampp/htdocs/Task-manager/app/Http/Controllers/TasksController.php",
+		"/C/xampp/htdocs/Task-manager/resources/js/components/welcome.vue",
+		"/C/xampp/htdocs/Task-manager/routes/api.php",
+		"/C/xampp/htdocs/Task-manager/resources/js/modules/task.js",
 		"/C/xampp/htdocs/Task-manager/resources/js/components/tasks-index-create.vue",
+		"/C/xampp/htdocs/Task-manager/app/Http/Controllers/ProjectController.php",
+		"/C/xampp/htdocs/Task-manager/app/Http/Controllers/TaskController.php",
+		"/C/xampp/htdocs/Task-manager/app/Project.php",
+		"/C/xampp/htdocs/Task-manager/app/Task.php",
+		"/C/xampp/htdocs/Task-manager/resources/js/components/projects-index.vue",
+		"/C/xampp/htdocs/Task-manager/node_modules/express/lib/application.js",
+		"/C/xampp/htdocs/Task-manager/resources/views/layouts/app.blade.php",
+		"/C/xampp/htdocs/Task-manager/resources/js/modules/project.js",
+		"/C/xampp/htdocs/Task-manager/app/Http/Middleware/VerifyCsrfToken.php",
+		"/C/xampp/htdocs/Task-manager/resources/views/projects/create.blade.php",
 		"/C/xampp/htdocs/Task-manager/resources/js/store/store.js",
 		"/C/xampp/htdocs/Task-manager/config/app.php",
 		"/C/xampp/htdocs/Task-manager/resources/js/app.js",
 		"/C/xampp/htdocs/Task-manager/resources/views/projects/show.blade.php",
 		"/C/xampp/htdocs/Task-manager/resources/js/store/modules/task.js",
 		"/C/xampp/htdocs/Task-manager/resources/js/modules/thing.js",
-		"/C/xampp/htdocs/Task-manager/routes/api.php",
-		"/C/xampp/htdocs/Task-manager/app/Http/Controllers/ProjectController.php",
-		"/C/xampp/htdocs/Task-manager/routes/web.php",
 		"/C/xampp/htdocs/Task-manager/webpack.mix.js",
 		"/C/xampp/htdocs/Task-manager/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php",
 		"/C/xampp/htdocs/Task-manager/public/css/app.css",
@@ -142,17 +160,11 @@
 		"/C/Users/ery/AppData/Roaming/Sublime Text 3/Packages/User/Xdebug.sublime-settings",
 		"/C/Users/ery/AppData/Roaming/Sublime Text 3/Packages/Xdebug Client/Xdebug.sublime-settings",
 		"/C/xampp/htdocs/Task-manager/resources/js/components/tasks-show.vue",
-		"/C/xampp/htdocs/Task-manager/resources/views/projects/create.blade.php",
-		"/C/xampp/htdocs/Task-manager/resources/js/components/confirm-delete-button.vue",
 		"/C/xampp/htdocs/Task-manager/resources/views/projects/edit.blade.php",
-		"/C/xampp/htdocs/Task-manager/resources/js/components/projects-index.vue",
-		"/C/xampp/htdocs/Task-manager/resources/views/projects/index.blade.php",
 		"/C/xampp/htdocs/Task-manager/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php",
-		"/C/xampp/htdocs/Task-manager/resources/views/layouts/app.blade.php",
 		"/C/xampp/htdocs/Task-manager/public/mix-manifest.json",
 		"/C/xampp/htdocs/Task-manager/resources/js/components/projects-show.vue",
 		"/C/xampp/htdocs/Task-manager/resources/js/components/projects-create.vue",
-		"/C/xampp/htdocs/Task-manager/app/Project.php",
 		"/C/xampp/htdocs/Task-manager/resources/js/bootstrap.js",
 		"/C/xampp/htdocs/Task-manager/resources/js/store/modules/project.js",
 		"/C/xampp/htdocs/Task-manager/resources/js/services/ProjectService.js",
@@ -162,7 +174,7 @@
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 27.0
 	},
 	"find_in_files":
 	{
@@ -176,6 +188,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"version",
 			"deleteId",
 			"setDelete",
 			"text",
@@ -256,6 +269,46 @@
 		"selected_items":
 		[
 			[
+				"projects\\",
+				"resources\\views\\projects\\index.blade.php"
+			],
+			[
+				".vue",
+				"resources\\js\\components\\tasks-index-create.vue"
+			],
+			[
+				"api",
+				"routes\\api.php"
+			],
+			[
+				"Taskcon",
+				"app\\Http\\Controllers\\TaskController.php"
+			],
+			[
+				"projectcon",
+				"app\\Http\\Controllers\\ProjectController.php"
+			],
+			[
+				"web.php",
+				"routes\\web.php"
+			],
+			[
+				"appli",
+				"node_modules\\express\\lib\\application.js"
+			],
+			[
+				"app.blade",
+				"resources\\views\\layouts\\app.blade.php"
+			],
+			[
+				"projectcontroller",
+				"app\\Http\\Controllers\\ProjectController.php"
+			],
+			[
+				"verifyc",
+				"app\\Http\\Middleware\\VerifyCsrfToken.php"
+			],
+			[
 				"app.php",
 				"config\\app.php"
 			],
@@ -264,16 +317,8 @@
 				"resources\\js\\services\\TaskService.js"
 			],
 			[
-				"projectcontroller",
-				"app\\Http\\Controllers\\ProjectController.php"
-			],
-			[
 				"web.",
 				"routes\\web.php"
-			],
-			[
-				"api",
-				"routes\\api.php"
 			],
 			[
 				"taskcontroller",
@@ -308,16 +353,8 @@
 				"app\\Http\\Controllers\\TaskController.php"
 			],
 			[
-				"projectcon",
-				"app\\Http\\Controllers\\ProjectController.php"
-			],
-			[
 				"api.php",
 				"routes\\api.php"
-			],
-			[
-				"web.php",
-				"routes\\web.php"
 			],
 			[
 				"taskcont",
@@ -342,10 +379,6 @@
 			[
 				"create.blade",
 				"resources\\views\\projects\\create.blade.php"
-			],
-			[
-				"app.blade",
-				"resources\\views\\layouts\\app.blade.php"
 			],
 			[
 				"app.blade.php",

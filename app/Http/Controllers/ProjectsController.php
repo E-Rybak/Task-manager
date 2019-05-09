@@ -28,7 +28,7 @@ class ProjectsController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-        	'title' => ['required', 'min:3', 'max:255']
+        	'title' => ['required', 'min:3', 'max:100']
         ]);
         $project = Project::create(['title'=>request('title')]);
         return redirect()->route('projects.show', ['id' => $project->id]);
@@ -82,10 +82,7 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-        $project = Project::with('tasks')->findOrFail($id);
-        $project->tasks()->delete();
-        $project->delete();
-        $projects = Project::all();
+        $project = Project::with('tasks')->findOrFail($id)->deleteWithTasks();
         return redirect()->route('projects.index');
     }
 }

@@ -36,14 +36,19 @@ class TasksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        $task = new Task;
-        $task->title = $request->input('title');
-        $task->content = $request->input('content');
-        $project = Project::findOrFail($request->input('projectId'));
-        $project->tasks()->save($task);
-        return response($task, 201);
+        $project = Project::findOrFail(request('projectId'));
+
+        $project->addTask(
+
+            request()->validate([
+            'title' => ['required', 'min:3','max:100'],
+            'content'=> ['required']
+            ])
+        );
+
+        return response(201);
     }
 
     /**
