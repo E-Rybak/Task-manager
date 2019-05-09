@@ -41,7 +41,6 @@ class TasksController extends Controller
         $project = Project::findOrFail(request('projectId'));
 
         $project->addTask(
-
             request()->validate([
             'title' => ['required', 'min:3','max:100'],
             'content'=> ['required']
