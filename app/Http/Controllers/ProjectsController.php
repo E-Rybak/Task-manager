@@ -31,6 +31,7 @@ class ProjectsController extends Controller
         	'title' => ['required', 'min:3', 'max:100']
         ]);
         $project = Project::create(['title'=>request('title')]);
+        session()->flash('message', 'Project created!');
         return redirect()->route('projects.show', ['id' => $project->id]);
     }
 

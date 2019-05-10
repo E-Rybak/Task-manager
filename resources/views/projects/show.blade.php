@@ -3,6 +3,9 @@
 @section('content')
 
 <div class="container">
+	@if (session('message'))
+	<b-alert show dismissible variant="success">{{ session('message') }}</b-alert>
+	@endif
 	<b-jumbotron>
 		<template slot="header">
 			{{ $project->title }}
